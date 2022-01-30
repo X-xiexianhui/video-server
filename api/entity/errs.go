@@ -4,6 +4,7 @@ type Err struct {
 	Error     string `json:"error"`
 	ErrorCode string `json:"error_code"`
 }
+
 type ErrorResponse struct {
 	httpSC int
 	Error  Err
