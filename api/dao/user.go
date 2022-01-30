@@ -1,9 +1,11 @@
 package dao
 
-import "log"
+import (
+	"log"
+)
 
 func AddUser(loginName string, pwd string) error {
-	stmtIns, err := dbConn.Prepare("INSERT INTO video_server.users (login_name,pwd) VALUES (?,?)")
+	stmtIns, err := dbConn.Prepare("INSERT INTO users (login_name,pwd) VALUES (?,?)")
 	if err != nil {
 		return err
 	}
@@ -19,7 +21,7 @@ func AddUser(loginName string, pwd string) error {
 }
 
 func GetUser(loginName string) (string, error) {
-	stmtOut, err := dbConn.Prepare("SELECT pwd FROM video_server.users WHERE login_name=?")
+	stmtOut, err := dbConn.Prepare("SELECT pwd FROM users WHERE login_name=?")
 	if err != nil {
 		log.Panicf("%s", err)
 	}
@@ -29,12 +31,15 @@ func GetUser(loginName string) (string, error) {
 	if err != nil {
 		return "", err
 	}
-
+	err = stmtOut.Close()
+	if err != nil {
+		return "", err
+	}
 	return "", nil
 }
 
 func DeleteUser(loginName string, pwd string) error {
-	stmtDel, err := dbConn.Prepare("DELETE FROM video_server.users WHERE login_name=? AND pwd=?")
+	stmtDel, err := dbConn.Prepare("DELETE FROM users WHERE login_name=? AND pwd=?")
 	if err != nil {
 		log.Panicf("%s", err)
 	}

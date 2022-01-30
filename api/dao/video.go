@@ -17,7 +17,7 @@ func AddNewVideo(aid int, name string) (*entity.VideoInfo, error) {
 
 	t := time.Now()
 	ctime := t.Format("Jan 02 2006, 15:04:05")
-	stmtIns, err := dbConn.Prepare("INSERT INTO video_server.video_info (id, author_id, name, display_ctime) VALUES(?, ?, ?, ?)")
+	stmtIns, err := dbConn.Prepare("INSERT INTO video_info (id, author_id, name, display_ctime) VALUES(?, ?, ?, ?)")
 	if err != nil {
 		return nil, err
 	}
@@ -36,7 +36,7 @@ func AddNewVideo(aid int, name string) (*entity.VideoInfo, error) {
 }
 
 func GetVideoInfo(vid string) (*entity.VideoInfo, error) {
-	stmtOut, err := dbConn.Prepare("SELECT author_id,name,display_ctime FROM video_server.video_info WHERE id=?")
+	stmtOut, err := dbConn.Prepare("SELECT author_id,name,display_ctime FROM video_info WHERE id=?")
 	var (
 		aid  int
 		dct  string
@@ -62,7 +62,7 @@ func GetVideoInfo(vid string) (*entity.VideoInfo, error) {
 }
 
 func ListVideoInfo(uname string, from, to int) ([]*entity.VideoInfo, error) {
-	stmtOut, err := dbConn.Prepare(`SELECT video_server.video_info.id, video_server.video_info.author_id, video_server.video_info.name, video_server.video_info.display_ctime FROM video_server.video_info 
+	stmtOut, err := dbConn.Prepare(`SELECT video_info.id, video_info.author_id, video_info.name, video_info.display_ctime FROM video_info 
 		WHERE video_server.users.login_name = ? AND video_info.create_time > FROM_UNIXTIME(?) AND video_info.create_time <= FROM_UNIXTIME(?) 
 		ORDER BY video_info.create_time DESC`)
 	var res []*entity.VideoInfo
@@ -95,7 +95,7 @@ func ListVideoInfo(uname string, from, to int) ([]*entity.VideoInfo, error) {
 }
 
 func DeleteVideoInfo(vid string) error {
-	stmtDel, err := dbConn.Prepare("DELETE FROM video_server.video_info WHERE id=?")
+	stmtDel, err := dbConn.Prepare("DELETE FROM video_info WHERE id=?")
 	if err != nil {
 		return err
 	}
