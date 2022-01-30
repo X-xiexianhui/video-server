@@ -1,3 +1,9 @@
+//Package dao
+/*
+ @author:xie
+   @date:2022/1/30
+   @note:视频功能
+*/
 package dao
 
 import (
