@@ -94,7 +94,7 @@ func testReGetVideoInfo(t *testing.T) {
 func TestComments(t *testing.T) {
 	clearTables()
 	t.Run("AddUser", testAddUser)
-	t.Run("AddCommnets", testAddComments)
+	t.Run("AddComments", testAddComments)
 	t.Run("ListComments", testListComments)
 }
 
