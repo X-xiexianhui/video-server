@@ -46,7 +46,7 @@ func LoadSessionFromDB() {
 	})
 }
 
-func GenerateNewSession(uname string) string {
+func GenerateNewSessionId(uname string) string {
 	id, _ := utils.NewUUID()
 	ctime := NowInMillion()
 	ttl := ctime + 30*60*1000 //session过期时间，30min

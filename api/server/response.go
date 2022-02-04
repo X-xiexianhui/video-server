@@ -1,10 +1,18 @@
 package server
 
-import "net/http"
+import (
+	"encoding/json"
+	"io"
+	"net/http"
+	"video_server/api/entity"
+)
 
-func SendErrorResponse(w http.ResponseWriter) {
-
+func sendErrorResponse(w http.ResponseWriter, errResp entity.ErrorResponse) {
+	w.WriteHeader(errResp.HttpSC)
+	resStr, _ := json.Marshal(&errResp.Error)
+	io.WriteString(w, string(resStr))
 }
-func SendNormalResponse(w http.ResponseWriter) {
-
+func sendNormalResponse(w http.ResponseWriter, resp string, sc int) {
+	w.WriteHeader(sc)
+	io.WriteString(w, resp)
 }

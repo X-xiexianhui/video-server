@@ -7,7 +7,8 @@ import (
 
 func main() {
 	r := server.RegisterHandlers()
-	err := http.ListenAndServe(":8800", r)
+	mh := server.NewMiddleWareHandle(r)
+	err := http.ListenAndServe(":8800", mh)
 	if err != nil {
 		return
 	}

@@ -36,11 +36,11 @@ func testGetUser(t *testing.T) {
 	if err != nil {
 		t.Errorf("%v", err)
 	}
-	t.Logf("%s", pwd)
+	t.Logf("%v", pwd)
 }
 
 func testAddUser(t *testing.T) {
-	err := AddUser("admin", "123456")
+	err := AddUserCredential("admin", "123456")
 	if err != nil {
 		t.Errorf("%v", err)
 	}
