@@ -36,7 +36,7 @@ func VideoClearDispatcher(dc dataChan) error {
 	return nil
 }
 
-func VideoClearExecute(dc dataChan) error {
+func VideoClearExecutor(dc dataChan) error {
 	errMap := &sync.Map{}
 	var err error
 forLoop:

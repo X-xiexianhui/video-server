@@ -6,6 +6,14 @@
 */
 package main
 
-func main() {
+import (
+	"net/http"
+	"video_server/scheduler/server"
+	"video_server/scheduler/taskRunner"
+)
 
+func main() {
+	go taskRunner.Start()
+	r := server.RegisterHandlers()
+	http.ListenAndServe(":9001", r)
 }
