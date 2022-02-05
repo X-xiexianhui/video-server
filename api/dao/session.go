@@ -2,7 +2,7 @@
 /*
    @author:xie
    @date:2022/1/31
-   @note:用户session相关功能
+   @note:操作session表
 */
 package dao
 

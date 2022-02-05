@@ -10,9 +10,15 @@ import (
 func sendErrorResponse(w http.ResponseWriter, errResp entity.ErrorResponse) {
 	w.WriteHeader(errResp.HttpSC)
 	resStr, _ := json.Marshal(&errResp.Error)
-	io.WriteString(w, string(resStr))
+	_, err := io.WriteString(w, string(resStr))
+	if err != nil {
+		return
+	}
 }
 func sendNormalResponse(w http.ResponseWriter, resp string, sc int) {
 	w.WriteHeader(sc)
-	io.WriteString(w, resp)
+	_, err := io.WriteString(w, resp)
+	if err != nil {
+		return
+	}
 }

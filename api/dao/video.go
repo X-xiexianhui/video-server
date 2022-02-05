@@ -2,7 +2,7 @@
 /*
  @author:xie
    @date:2022/1/30
-   @note:视频功能
+   @note:操作videoInfo表
 */
 package dao
 

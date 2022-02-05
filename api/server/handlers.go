@@ -12,7 +12,7 @@ import (
 	"video_server/api/utils"
 )
 
-func CreateUser(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
+func CreateUser(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	res, _ := ioutil.ReadAll(r.Body)
 	uBody := &entity.UserCredential{}
 
@@ -97,7 +97,7 @@ func GetUserInfo(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
 	}
 }
 
-func AddNewVideo(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
+func AddNewVideo(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	if !ValidateUser(w, r) {
 		log.Printf("Unaythorized user\n")
 		return

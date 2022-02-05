@@ -2,7 +2,7 @@
 /*
    @author:xie
    @date:2022/1/30
-   @note:评论功能
+   @note:操作comments表
 */
 package dao
 
