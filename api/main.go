@@ -10,7 +10,7 @@ func main() {
 	session.LoadSessionFromDB()
 	r := server.RegisterHandlers()
 	mh := server.NewMiddleWareHandle(r)
-	err := http.ListenAndServe(":8800", mh)
+	err := http.ListenAndServe(":8000", mh)
 	if err != nil {
 		return
 	}
