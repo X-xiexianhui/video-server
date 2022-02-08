@@ -14,8 +14,5 @@ import (
 func main() {
 	r := server.RegisterHandlers()
 	mh := server.NewMiddleWareHandler(r, 2)
-	err := http.ListenAndServe(":9000", mh)
-	if err != nil {
-		return
-	}
+	http.ListenAndServe(":9000", mh)
 }
