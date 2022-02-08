@@ -1,3 +1,8 @@
+/*
+   @author:xie
+   @date:2022/2/6
+   @note:
+*/
 $(document).ready(function() {
 
 	DEFAULT_COOKIE_EXPIRE_TIME = 30;

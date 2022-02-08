@@ -7,7 +7,6 @@
 package server
 
 import (
-	"github.com/julienschmidt/httprouter"
 	"io"
 	"io/ioutil"
 	"log"
@@ -28,9 +27,7 @@ func streamHandler(w http.ResponseWriter, r *http.Request, p httprouter.Params) 
 	}
 	w.Header().Set("Content-Type", "video/mp4")
 	http.ServeContent(w, r, "", time.Now(), video)
-	defer func(video *os.File) {
-		_ = video.Close()
-	}(video)
+	video.Close()
 }
 
 func uploadHandler(w http.ResponseWriter, r *http.Request, p httprouter.Params) {

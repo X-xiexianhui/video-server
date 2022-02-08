@@ -1,7 +1,6 @@
 package utils
 
 import (
-	"avenssi/config"
 	"crypto/rand"
 	"fmt"
 	"io"
@@ -28,7 +27,7 @@ func GetCurrentTimestampSec() int {
 }
 
 func SendDeleteVideoRequest(id string) {
-	addr := config.GetLbAddr() + ":9001"
+	addr := "127.0.0.1:9001"
 	url := "http://" + addr + "/video-delete-record/" + id
 	_, err := http.Get(url)
 	if err != nil {
