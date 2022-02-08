@@ -68,9 +68,10 @@ func GetVideoInfo(vid string) (*entity.VideoInfo, error) {
 }
 
 func ListVideoInfo(uname string, from, to int) ([]*entity.VideoInfo, error) {
-	stmtOut, err := dbConn.Prepare(`SELECT video_info.id, video_info.author_id, video_info.name, video_info.display_ctime FROM video_info 
-		WHERE users.login_name = ? AND video_info.create_time > FROM_UNIXTIME(?) AND video_info.create_time <= FROM_UNIXTIME(?) 
-		ORDER BY video_info.create_time DESC`)
+	stmtOut, err := dbConn.Prepare(`SELECT video_info.id, video_info.author_id, video_info.name, video_info.display_ctime FROM video_info
+	INNER JOIN users ON video_info.author_id = users.id
+	WHERE users.login_name = ? AND video_info.create_time > FROM_UNIXTIME(?) AND video_info.create_time <= FROM_UNIXTIME(?) 
+	ORDER BY video_info.create_time DESC`)
 	var res []*entity.VideoInfo
 
 	if err != nil {
