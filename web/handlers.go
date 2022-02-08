@@ -74,6 +74,7 @@ func apiHandler(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 		io.WriteString(w, string(re))
 		return
 	}
+
 	res, _ := ioutil.ReadAll(r.Body)
 	apiBody := &ApiBody{}
 	if err := json.Unmarshal(res, apiBody); err != nil {
@@ -81,9 +82,11 @@ func apiHandler(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 		io.WriteString(w, string(re))
 		return
 	}
+
 	request(apiBody, w, r)
 	defer r.Body.Close()
 }
+
 func proxyHandler(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	u, _ := url.Parse("127.0.0.1:9000/")
 	proxy := httputil.NewSingleHostReverseProxy(u)
