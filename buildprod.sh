@@ -1,5 +1,8 @@
 #! /bin/bash
 
+#Copy templates
+cp -R ./templates ./bin/
+mkdir ./bin/videos
 # Build web and other services
 
 cd ~/work/src/video_server/api

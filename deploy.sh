@@ -1,8 +1,8 @@
 #! /bin/bash
 
-cp -R ./templates ./bin/
+#cp -R ./templates ./bin/
 
-mkdir ./bin/videos
+#mkdir ./bin/videos
 
 cd bin
 
