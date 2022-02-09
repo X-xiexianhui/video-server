@@ -22,7 +22,7 @@ func streamHandler(w http.ResponseWriter, r *http.Request, p httprouter.Params) 
 	vl := config.VideoDir + vid
 	video, err := os.Open(vl)
 	if err != nil {
-		log.Printf("Open video failed")
+		log.Printf("Open video failed:%s", err)
 		sendErrorResponse(w, http.StatusInternalServerError, "Internal Error")
 		return
 	}
