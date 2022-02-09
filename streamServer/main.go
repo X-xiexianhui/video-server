@@ -13,6 +13,6 @@ import (
 
 func main() {
 	r := server.RegisterHandlers()
-	mh := server.NewMiddleWareHandler(r, 2)
+	mh := server.NewMiddleWareHandler(r, 1000)
 	http.ListenAndServe(":9000", mh)
 }
