@@ -173,7 +173,10 @@ $(document).ready(function() {
 	$("#logout").on('click', function() {
 		setCookie("session", "", -1)
 		setCookie("username", "", -1)
-		window.location.replace("http://23.234.215.32:8080/#")
+		$.ajax({
+			url : 'http://' + window.location.hostname,
+			type: 'GET'
+		})
 	});
 
 
