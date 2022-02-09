@@ -49,23 +49,28 @@ func homeHandler(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 func userHomeHandler(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	cname, err1 := r.Cookie("username")
 	_, err2 := r.Cookie("session")
-	if err2 != nil || err1 != nil {
+
+	if err1 != nil || err2 != nil {
 		http.Redirect(w, r, "/", http.StatusFound)
-	}
-	fName := r.FormValue("username")
-	var page *UserPage
-	if len(cname.Value) != 0 {
-		page = &UserPage{Name: cname.Value}
-	} else if len(fName) != 0 {
-		page = &UserPage{Name: fName}
-	}
-	t, err := template.ParseFiles("./templates/userhome.html")
-	if err != nil {
-		log.Printf("Parsing userhome error:%s", err)
 		return
 	}
-	t.Execute(w, page)
-	return
+
+	fName := r.FormValue("username")
+
+	var p *UserPage
+	if len(cname.Value) != 0 {
+		p = &UserPage{Name: cname.Value}
+	} else if len(fName) != 0 {
+		p = &UserPage{Name: fName}
+	}
+
+	t, e := template.ParseFiles("./templates/userhome.html")
+	if e != nil {
+		log.Printf("Parsing userhome.html error: %s", e)
+		return
+	}
+
+	t.Execute(w, p)
 }
 
 func apiHandler(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
