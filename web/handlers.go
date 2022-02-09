@@ -48,9 +48,9 @@ func homeHandler(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 
 func userHomeHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	cname, err1 := r.Cookie("username")
-	_, err2 := r.Cookie("session")
+	session, err2 := r.Cookie("session")
 
-	if err1 != nil || err2 != nil {
+	if err1 != nil || err2 != nil || len(cname.Value) == 0 || len(session.Value) == 0 {
 		http.Redirect(w, r, "/", http.StatusFound)
 		return
 	}
