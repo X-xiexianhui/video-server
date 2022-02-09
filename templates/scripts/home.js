@@ -124,7 +124,6 @@ $(document).ready(function() {
 	  	var vname = $('#vname').val();
 
 	  	createVideo(vname, function(res, err) {
-			  console.log(err)
 	  		if (err != null ) {
 	  			//window.alert('encounter an error when try to create video');
 	  			popupErrorMsg('encounter an error when try to create video');
@@ -134,7 +133,6 @@ $(document).ready(function() {
 	  		var obj = JSON.parse(res);
 	  		var formData = new FormData();
 			formData.append('file', $('#inputFile')[0].files[0]);
-			console.log($('#inputFile')[0].files[0])
 			$.ajax({
 				url : 'http://' + window.location.hostname + ':8080/upload/' + obj['id'],
 				// url:'http://127.0.0.1:8080/upload/'+ obj['id'],
