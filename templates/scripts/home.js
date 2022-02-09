@@ -185,7 +185,6 @@ $(document).ready(function() {
 function initPage(callback) {
 	getUserId(function(res, err) {
 		if (err != null) {
-			window.alert("Encountered error when loading user id");
 			return;
 		}
 
