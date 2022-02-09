@@ -10,7 +10,7 @@ import "github.com/julienschmidt/httprouter"
 
 func RegisterHandlers() *httprouter.Router {
 	router := httprouter.New()
-	router.GET("/video/:vid-id", streamHandler)
+	router.GET("/videos/:vid-id", streamHandler)
 	router.POST("/upload/:vid-id", uploadHandler)
 	return router
 }

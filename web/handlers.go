@@ -92,3 +92,9 @@ func proxyHandler(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
 	proxy := httputil.NewSingleHostReverseProxy(u)
 	proxy.ServeHTTP(w, r)
 }
+
+func loadProxyHandler(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
+	u, _ := url.Parse("http://127.0.0.1:9000/")
+	proxy := httputil.NewSingleHostReverseProxy(u)
+	proxy.ServeHTTP(w, r)
+}
