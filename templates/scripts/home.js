@@ -173,10 +173,6 @@ $(document).ready(function() {
 	$("#logout").on('click', function() {
 		setCookie("session", "", -1)
 		setCookie("username", "", -1)
-		$.ajax({
-			url : 'http://' + window.location.hostname+'/',
-			type: 'GET'
-		});
 	});
 
 
