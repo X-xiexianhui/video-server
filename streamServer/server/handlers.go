@@ -51,7 +51,8 @@ func uploadHandler(w http.ResponseWriter, r *http.Request, p httprouter.Params) 
 	fileName := p.ByName("vid-id")
 	err = ioutil.WriteFile(config.VideoDir+fileName, data, 0666)
 	if err != nil {
-		log.Printf("Write file failed")
+		log.Printf("fileName:%s", fileName)
+		log.Printf("Write file failed:%s", err)
 		sendErrorResponse(w, http.StatusInternalServerError, "Internal error")
 		return
 	}
