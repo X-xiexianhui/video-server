@@ -176,7 +176,7 @@ $(document).ready(function() {
 		$.ajax({
 			url : 'http://' + window.location.hostname,
 			type: 'GET'
-		})
+		});
 	});
 
 
