@@ -46,7 +46,7 @@ func homeHandler(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 
 }
 
-func userHomeHandler(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
+func userHomeHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	cname, err1 := r.Cookie("username")
 	_, err2 := r.Cookie("session")
 
