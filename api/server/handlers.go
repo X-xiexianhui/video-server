@@ -118,6 +118,7 @@ func AddNewVideo(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 		return
 	}
 	if resp, err := json.Marshal(vi); err != nil {
+		log.Printf("Session error:%s", err)
 		sendErrorResponse(w, entity.ErrorSessionFaults)
 	} else {
 		sendNormalResponse(w, string(resp), 201)
